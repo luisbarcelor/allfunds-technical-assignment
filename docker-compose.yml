@@ -1,0 +1,16 @@
+services:
+  allfunds-db:
+    image: bitnami/mongodb:8.0.5
+    env_file:
+      - .env
+    environment:
+      - MONGODB_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
+      - MONGODB_USERNAME=${DB_USER}
+      - MONGODB_PASSWORD=${DB_PASSWORD}
+      - MONGODB_DATABASE=${DB_NAME}
+    ports:
+      - '27017:27017'
+    volumes:
+      - allfunds_data:/bitnami/mongodb
+volumes:
+  allfunds_data:
